@@ -1,0 +1,6 @@
+@GHLearning.EasyHangfire.AppContinueJob_HostAddress = http://localhost:5123
+
+GET {{GHLearning.EasyHangfire.AppContinueJob_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

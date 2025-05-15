@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyHangfire.AppContinueJob", "src\GHLearning.EasyHangfire.AppContinueJob\GHLearning.EasyHangfire.AppContinueJob.csproj", "{B4CD8CB4-2283-431E-8D8A-898790B8FD04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyHangfire.AppRecurringJobs", "src\GHLearning.EasyHangfire.AppRecurringJobs\GHLearning.EasyHangfire.AppRecurringJobs.csproj", "{D2E32484-0E21-46E9-A8BA-D51D3272EA75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyHangfire.AppDelayedJobs", "src\GHLearning.EasyHangfire.AppDelayedJobs\GHLearning.EasyHangfire.AppDelayedJobs.csproj", "{5D8ED267-2306-46D3-83FB-C503DC73CB94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyHangfire.AppFireAndForgetJobs", "src\GHLearning.EasyHangfire.AppFireAndForgetJobs\GHLearning.EasyHangfire.AppFireAndForgetJobs.csproj", "{DE4AB9F9-866C-47C9-BC13-8BFE749FEEE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyHangfire.AppAuthorization", "src\GHLearning.EasyHangfire.AppAuthorization\GHLearning.EasyHangfire.AppAuthorization.csproj", "{68CBBB2C-492D-406B-9AFA-E2D9F32A6299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyHangfire.AppSentry", "src\GHLearning.EasyHangfire.AppSentry\GHLearning.EasyHangfire.AppSentry.csproj", "{156A6703-3A6B-47C2-894F-1747C0CE041A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyHangfire.AppOpenTelemetry", "src\GHLearning.EasyHangfire.AppOpenTelemetry\GHLearning.EasyHangfire.AppOpenTelemetry.csproj", "{C34FA3B2-DB3D-672C-9DFC-43EFCDEFBA7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4CD8CB4-2283-431E-8D8A-898790B8FD04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4CD8CB4-2283-431E-8D8A-898790B8FD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4CD8CB4-2283-431E-8D8A-898790B8FD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4CD8CB4-2283-431E-8D8A-898790B8FD04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2E32484-0E21-46E9-A8BA-D51D3272EA75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2E32484-0E21-46E9-A8BA-D51D3272EA75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2E32484-0E21-46E9-A8BA-D51D3272EA75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E32484-0E21-46E9-A8BA-D51D3272EA75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D8ED267-2306-46D3-83FB-C503DC73CB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D8ED267-2306-46D3-83FB-C503DC73CB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D8ED267-2306-46D3-83FB-C503DC73CB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D8ED267-2306-46D3-83FB-C503DC73CB94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE4AB9F9-866C-47C9-BC13-8BFE749FEEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE4AB9F9-866C-47C9-BC13-8BFE749FEEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE4AB9F9-866C-47C9-BC13-8BFE749FEEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE4AB9F9-866C-47C9-BC13-8BFE749FEEE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68CBBB2C-492D-406B-9AFA-E2D9F32A6299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68CBBB2C-492D-406B-9AFA-E2D9F32A6299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68CBBB2C-492D-406B-9AFA-E2D9F32A6299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68CBBB2C-492D-406B-9AFA-E2D9F32A6299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156A6703-3A6B-47C2-894F-1747C0CE041A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156A6703-3A6B-47C2-894F-1747C0CE041A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156A6703-3A6B-47C2-894F-1747C0CE041A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156A6703-3A6B-47C2-894F-1747C0CE041A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C34FA3B2-DB3D-672C-9DFC-43EFCDEFBA7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C34FA3B2-DB3D-672C-9DFC-43EFCDEFBA7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C34FA3B2-DB3D-672C-9DFC-43EFCDEFBA7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C34FA3B2-DB3D-672C-9DFC-43EFCDEFBA7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B4CD8CB4-2283-431E-8D8A-898790B8FD04} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D2E32484-0E21-46E9-A8BA-D51D3272EA75} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5D8ED267-2306-46D3-83FB-C503DC73CB94} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{DE4AB9F9-866C-47C9-BC13-8BFE749FEEE1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{68CBBB2C-492D-406B-9AFA-E2D9F32A6299} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{156A6703-3A6B-47C2-894F-1747C0CE041A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C34FA3B2-DB3D-672C-9DFC-43EFCDEFBA7F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9ED2F0D-6928-4890-A18E-F07BFAC490CD}
+	EndGlobalSection
+EndGlobal
