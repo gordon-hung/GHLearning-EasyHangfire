@@ -1,4 +1,4 @@
-using GHLearning.EasyHangfire.AppDelayedJobs.AuthorizationFilters;
+﻿using GHLearning.EasyHangfire.AppDelayedJobs.AuthorizationFilters;
 using GHLearning.EasyHangfire.AppDelayedJobs.JobHandlers;
 using Hangfire;
 
@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// Learn more about configuring  Sentry at https://docs.hangfire.io/en/latest/
+// Learn more about configuring Hangfire at https://docs.hangfire.io/en/latest/
 builder.Services.AddHangfire(configuration => configuration
 	.UseInMemoryStorage())
 	.AddHangfireServer(options => options.SchedulePollingInterval = TimeSpan.FromSeconds(15));

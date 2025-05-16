@@ -1,6 +1,0 @@
-@GHLearning.EasyHangfire.AppAuthorization_HostAddress = http://localhost:5156
-
-GET {{GHLearning.EasyHangfire.AppAuthorization_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

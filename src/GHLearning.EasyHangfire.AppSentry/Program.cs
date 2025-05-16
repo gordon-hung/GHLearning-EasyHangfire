@@ -1,4 +1,4 @@
-using Hangfire;
+﻿using Hangfire;
 using GHLearning.EasyHangfire.AppSentry.AuthorizationFilters;
 using GHLearning.EasyHangfire.AppSentry.JobHandlers;
 using Serilog;
@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// Learn more about configuring  Sentry at https://docs.hangfire.io/en/latest/
+// Learn more about configuring Hangfire at https://docs.hangfire.io/en/latest/
 builder.Services.AddHangfire(configuration =>
 {
 	configuration.UseInMemoryStorage();

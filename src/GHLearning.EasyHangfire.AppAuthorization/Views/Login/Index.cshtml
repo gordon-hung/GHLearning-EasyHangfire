@@ -1,0 +1,24 @@
+﻿@model GHLearning.EasyHangfire.AppAuthorization.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "登入";
+}
+
+<h2>登入</h2>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div style="color:red">@ViewBag.ErrorMessage</div>
+}
+
+<form asp-action="Login" method="post">
+    <div>
+        <label>帳號：</label>
+        <input asp-for="Account" />
+    </div>
+    <div>
+        <label>密碼：</label>
+        <input asp-for="Password" type="password" />
+    </div>
+    <button type="submit">登入</button>
+</form>

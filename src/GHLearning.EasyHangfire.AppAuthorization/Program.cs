@@ -1,20 +1,26 @@
-﻿using GHLearning.EasyHangfire.AppAuthorization;
-using GHLearning.EasyHangfire.AppAuthorization.AuthorizationFilters;
-using GHLearning.EasyHangfire.AppAuthorization.JobHandlers;
-
 using Hangfire;
 using Hangfire.Dashboard;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Options;
+using GHLearning.EasyHangfire.AppAuthorization;
+using GHLearning.EasyHangfire.AppAuthorization.AuthorizationFilters;
+using GHLearning.EasyHangfire.AppAuthorization.JobHandlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Learn more about configuring Authentication at https://learn.microsoft.com/zh-tw/aspnet/core/security/authentication/cookie?view=aspnetcore-9.0
+builder.Services
+	.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+	.AddCookie(options =>
+	{
+		options.LoginPath = "/Login/Index";
+		options.ExpireTimeSpan = TimeSpan.FromHours(1);
+	});
 
-// Learn more about configuring  Sentry at https://docs.hangfire.io/en/latest/
+// Learn more about configuring Hangfire at https://docs.hangfire.io/en/latest/
 builder.Services.AddHangfire(configuration => configuration
 	.UseInMemoryStorage())
 	.AddHangfireServer(options => options.SchedulePollingInterval = TimeSpan.FromSeconds(15));
@@ -28,12 +34,15 @@ builder.Services
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-	app.MapOpenApi();
+	app.UseExceptionHandler("/Home/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
 
 app.UseAuthentication();
 
@@ -43,54 +52,25 @@ app.UseHangfireDashboard("/hangfire", new DashboardOptions
 {
 	Authorization =
 	[
-		new DashboardAuthorizationFilter(app.Services.GetRequiredService<IOptions<AuthorizationWhitelistOptions>>())
+		new DashboardAuthorizationFilter()
 	],
 	IsReadOnlyFunc = (context) =>
 	{
-		var options = app.Services.GetRequiredService<IOptions<AuthorizationWhitelistOptions>>().Value;
 		var httpContext = context.GetHttpContext();
 
-		var header = httpContext.Request.Headers.Authorization;
+		var role = httpContext.User.Claims
+			.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Role)?.Value;
 
-		if (string.IsNullOrWhiteSpace(header))
-		{
-			return true;
-		}
-
-		var authValues = System.Net.Http.Headers.AuthenticationHeaderValue.Parse(header!);
-
-		if (!"Basic".Equals(authValues.Scheme, StringComparison.InvariantCultureIgnoreCase))
-		{
-			return true;
-		}
-
-		if (string.IsNullOrWhiteSpace(authValues.Parameter))
-		{
-			return true;
-		}
-
-		var parameter = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(authValues.Parameter));
-		var parts = parameter.Split(':');
-
-		var username = parts[0];
-
-		var personnel = options.Personnels.FirstOrDefault(x => x.UserName == username);
-
-		return !personnel?.Roles.Equals("admin", StringComparison.OrdinalIgnoreCase) ?? false;
+		return !string.Equals(role, "admin", StringComparison.OrdinalIgnoreCase);
 	}
 });
 
-app.MapControllers();
+app.MapStaticAssets();
 
-app.MapGet("/", (HttpContext httpContext) =>
-{
-	// 清除 Authorization 標頭
-	httpContext.Request.Headers.Clear();
-
-	httpContext.Response.StatusCode = 401;
-	httpContext.Response.Headers.Append("WWW-Authenticate", "Basic realm=\"Hangfire Dashboard\"");
-	httpContext.Response.WriteAsync("Authentication is required.");
-});
+app.MapControllerRoute(
+	name: "default",
+	pattern: "{controller=Login}/{action=Index}/{id?}")
+	.WithStaticAssets();
 
 RecurringJob.AddOrUpdate(
 	nameof(PerMinuteJobHandler),
